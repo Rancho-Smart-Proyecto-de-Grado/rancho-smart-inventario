@@ -3,7 +3,6 @@ package com.rancho_smart.inventario_composer.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,28 +24,6 @@ public class InventarioRESTController {
 
     @PostMapping("/crear-animal")
     public Mono<ResponseEntity<AnimalDTO>> createAnimal(@RequestBody Object animalDTO) {
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println(animalDTO);
-        System.out.println(animalDTO.toString());
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-
         return animalService.createAnimal(animalDTO)
             .flatMap(response -> {
                 kafkaService.enviarMensajeAnimalCreado(response);
